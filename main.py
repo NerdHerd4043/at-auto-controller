@@ -31,8 +31,6 @@ options = parser.parse_args()
 detector = apriltag.Detector(options)
 cam = cv2.VideoCapture(0)
 
-auto_state = sd.getBoolean('auto_state', False)
-
 loop = True
 while loop:
     _, image = cam.read()
@@ -41,10 +39,13 @@ while loop:
         grayimg = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         detections = detector.detect(grayimg)
     
-        # Do stuff based on detections
+        for detection in detections:
+            pass
 
     cv2.imshow('Camera View', image)
 
     key = cv2.waitKey(10)
     if key == 13:
         loop = False
+
+cv2.destroyAllWindows()
