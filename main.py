@@ -4,9 +4,10 @@ import cv2 as cv2
 import argparse
 import apriltag
 
-from helpers import get_turn
+from helpers import get_turn, plot_quad
 
-ip = dotenv_values(".env")["RIO_IP"]
+env = dotenv_values(".env")
+ip = env["RIO_IP"]
 
 # Quick check that you actuall set the ip <3
 if ip == "10.TE.AM.2":
@@ -40,7 +41,7 @@ while loop:
         detections = detector.detect(grayimg)
     
         for detection in detections:
-            pass
+            image = plot_quad(image, detection.corners)
 
     cv2.imshow('Camera View', image)
 
