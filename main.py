@@ -20,4 +20,31 @@ sd = NetworkTables.getTable("SmartDashboard")
 # Get argparser for apriltag lib
 parser = argparse.ArgumentParser(description='Detect AprilTags from video stream.')
 apriltag.add_arguments(parser)
+parser.add_argument(
+    '-a', '--always-active', 
+    action='store_true',
+    help='Always detect april tags (default: only detect tags when auto is active)'
+    )
 options = parser.parse_args()
+
+# AprilTag detector and camera
+detector = apriltag.Detector(options)
+cam = cv2.VideoCapture(0)
+
+auto_state = sd.getBoolean('auto_state', False)
+
+loop = True
+while loop:
+    _, image = cam.read()
+
+    if options.always_active or sd.getBoolean('auto_state', False):
+        grayimg = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        detections = detector.detect(grayimg)
+    
+        # Do stuff based on detections
+
+    cv2.imshow('Camera View', image)
+
+    key = cv2.waitKey(10)
+    if key == 13:
+        loop = False
