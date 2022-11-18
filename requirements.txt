@@ -1,0 +1,3 @@
+# Editable install with no version control (apriltag==0.0.16)
+-e /Users/zynh/Downloads/apriltag-0.0.16/python
+python-dotenv==0.21.0
