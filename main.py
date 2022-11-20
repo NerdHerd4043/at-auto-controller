@@ -57,11 +57,10 @@ while loop:
         detections = detector.detect(grayimg)
 
         if detections:
-            for detection in detections:
-                image = plot_quad(
-                    image, detection.corners, detection.tag_id == drive_tag_id)
-                image = plot_text(image, detection.center, detection.tag_id)
-                image = plot_point(image, detection.center)
+            for tag in detections:
+                image = plot_quad(image, tag.corners, tag.tag_id == drive_tag_id)
+                image = plot_text(image, tag.center, tag.tag_id)
+                image = plot_point(image, tag.center)
 
             drive_tag = first(detections, lambda tag: tag.tag_id == drive_tag_id)
 
