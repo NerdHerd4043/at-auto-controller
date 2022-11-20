@@ -59,7 +59,7 @@ while loop:
         if detections:
             for tag in detections:
                 image = plot_quad(image, tag.corners, tag.tag_id == drive_tag_id)
-                image = plot_text(image, tag.center, tag.tag_id)
+                image = plot_text(image, tag.center, tag.tag_id) # Plotting tag id
                 image = plot_point(image, tag.center)
 
             drive_tag = first(detections, lambda tag: tag.tag_id == drive_tag_id)
