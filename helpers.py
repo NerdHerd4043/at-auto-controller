@@ -13,12 +13,6 @@ LINE_COLOR = round_iter(env["LINE_COLOR"].split(','))
 CENTER_COLOR = round_iter(env["CENTER_COLOR"].split(','))
 
 
-def get_turn(center):
-    x, _ = center
-    # 1920 / 2 = 960 = center of screen/half of the screen
-    return clamp_min_abs(-(960 - x) / 3000, 0.05)
-
-
 def clamp_min_abs(value, min_abs):
     return value if abs(value) > min_abs else 0
 
@@ -88,8 +82,3 @@ def first(iterable, condition = lambda x: True):
 
 def get_img_dim(image):
     return len(image), len(image[0])
-
-
-def plot_turn_line(image, center):
-
-    return cv2.line()

@@ -54,21 +54,13 @@ while loop:
     if detecting:
         detections = detector.detect(grayimg)
 
-        if detections:
-            for tag in detections:
-                image = plot_quad(image, tag.corners, tag.tag_id == drive_tag_id)
-                # TODO: Unreflect this...
-                # image = plot_text(image, tag.center, tag.tag_id) # Plotting tag id
-                image = plot_point(image, tag.center)
+        for tag in detections:
+            image = plot_quad(image, tag.corners, tag.tag_id == drive_tag_id)
+            # TODO: Unreflect this...
+            # image = plot_text(image, tag.center, tag.tag_id) # Plotting tag id
+            image = plot_point(image, tag.center)
 
-            drive_tag = first(detections, lambda tag: tag.tag_id == drive_tag_id)
-
-            if drive_tag:
-                turn = get_turn(drive_tag.center)
-
-                nt_drive(sd, 0.35 + abs(turn) / 2, turn)
-        else:
-            nt_drive(sd, 0, 0)
+        # control code goes here
 
     image = cv2.flip(image, 1)
 
