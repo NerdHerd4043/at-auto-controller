@@ -5,14 +5,11 @@ import argparse
 import apriltag
 
 from helpers import (
-    get_turn,
     plot_quad,
     plot_point,
     plot_auto_state,
     plot_detecting,
     plot_text,
-    nt_drive,
-    first
 )
 
 env = dotenv_values(".env")
@@ -60,7 +57,7 @@ while loop:
             # image = plot_text(image, tag.center, tag.tag_id) # Plotting tag id
             image = plot_point(image, tag.center)
 
-        # control code goes here
+        # control code goes here @Logan
 
     image = cv2.flip(image, 1)
 

@@ -71,11 +71,6 @@ def plot_text(image, center, text):
                        1, CENTER_COLOR, 3)
 
 
-def nt_drive(sd, fwd, rot):
-    sd.putNumber('drive_scalar', fwd)
-    sd.putNumber('turn_scalar', rot)
-
-
 def first(iterable, condition = lambda x: True):
     return next((x for x in iterable if condition(x)), None)
 
