@@ -16,7 +16,7 @@ CENTER_COLOR = round_iter(env["CENTER_COLOR"].split(','))
 def get_turn(center):
     x, _ = center
     # 1920 / 2 = 960 = center of screen/half of the screen
-    return clamp_min_abs(-(960 - x) / 1920, 0.05)
+    return clamp_min_abs(-(960 - x) / 3000, 0.05)
 
 
 def clamp_min_abs(value, min_abs):
@@ -83,4 +83,13 @@ def nt_drive(sd, fwd, rot):
 
 
 def first(iterable, condition = lambda x: True):
-    return next(x for x in iterable if condition(x))
+    return next((x for x in iterable if condition(x)), None)
+
+
+def get_img_dim(image):
+    return len(image), len(image[0])
+
+
+def plot_turn_line(image, center):
+
+    return cv2.line()

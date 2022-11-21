@@ -49,25 +49,31 @@ while loop:
     auto_state = sd.getBoolean('auto_state', False)
     detecting = options.always_active or auto_state
 
-    image = plot_auto_state(image, auto_state)
-    image = plot_detecting(image, options.always_active, auto_state)
+    grayimg = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
     if detecting:
-        grayimg = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         detections = detector.detect(grayimg)
 
         if detections:
             for tag in detections:
                 image = plot_quad(image, tag.corners, tag.tag_id == drive_tag_id)
-                image = plot_text(image, tag.center, tag.tag_id) # Plotting tag id
+                # TODO: Unreflect this...
+                # image = plot_text(image, tag.center, tag.tag_id) # Plotting tag id
                 image = plot_point(image, tag.center)
 
             drive_tag = first(detections, lambda tag: tag.tag_id == drive_tag_id)
 
             if drive_tag:
-                nt_drive(sd, 0.2, get_turn(drive_tag.center))
+                turn = get_turn(drive_tag.center)
+
+                nt_drive(sd, 0.35 + abs(turn) / 2, turn)
         else:
             nt_drive(sd, 0, 0)
+
+    image = cv2.flip(image, 1)
+
+    image = plot_auto_state(image, auto_state)
+    image = plot_detecting(image, options.always_active, auto_state)
 
     cv2.imshow('Camera View', image)
 
