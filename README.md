@@ -5,6 +5,13 @@ you will likely need to modify the `requirements.txt` file
  - Remove the -e line and replace it with `apriltag==0.0.16`
  - If this doesn't work, you will need to build and install the april tag library yourself
 
+ - Create virtual environment
+   - `python -m venv .venv`
+ - enable virtual env
+   - on mac: `source .venv/bin/activate`
+ - install requirements
+   - `pip install -r requirements.txt`
+
 ### .env setup
  - Copy `example.env` to `.env`
    - ### There are a few options to do this
