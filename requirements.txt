@@ -1,6 +1,6 @@
 # Editable install with no version control (apriltag==0.0.16)
 # Sorry anyone else | pip install apriltag will work on non apple silicon
--e /Users/zynh/Downloads/apriltag-0.0.16/python
+apriltag==0.0.16
 numpy==1.23.4
 opencv-python==4.6.0.66
 pynetworktables==2021.0.0
