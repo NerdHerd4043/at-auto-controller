@@ -77,3 +77,23 @@ def first(iterable, condition = lambda x: True):
 
 def get_img_dim(image):
     return len(image), len(image[0])
+
+
+# it's worth noting you are doing these math operations twice, considering vision
+# is a speed sensitive operation you want to minimize calculation as much as is
+# convenient. One easy way to do that is to extract these values to a variable,
+# and just use that variable in the if statement and the return
+#
+# Another side not, you could remove the else block and the code wouldn't change,
+# which generally means you should
+def speed(corners):
+    d = ((corners[1][0] - corners[0][0]) * (corners[1][0] - corners[0][0]) + (corners[1][1] - corners[0][1]) * (corners[1][1] - corners[0][1])) / 250000
+
+    if(d >= 0.6):
+        return 0.6
+    else:
+        return d
+
+
+# def speed(x_dist, y_dist):
+#     return min((x_dist + y_dist) / 260000, 0.75)
