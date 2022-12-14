@@ -87,7 +87,8 @@ def get_img_dim(image):
 # Another side not, you could remove the else block and the code wouldn't change,
 # which generally means you should
 def speed(corners):
-    d = ((corners[1][0] - corners[0][0]) * (corners[1][0] - corners[0][0]) + (corners[1][1] - corners[0][1]) * (corners[1][1] - corners[0][1])) / 250000
+    d = ((corners[1][0] - corners[0][0]) * (corners[1][0] - corners[0][0]) + 
+         (corners[1][1] - corners[0][1]) * (corners[1][1] - corners[0][1])) / 250000
 
     if(d >= 0.6):
         return 0.6
