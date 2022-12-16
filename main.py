@@ -95,6 +95,10 @@ while loop:
             sd.putNumber("Turn_Value", 0)
             sd.putNumber("Drive_Value", 0)
             sd.putBoolean("Drop_Tubes", False)
+    else:
+        sd.putNumber("Turn_Value", 0)
+        sd.putNumber("Drive_Value", 0)
+        sd.putBoolean("Drop_Tubes", False)
 
     image = cv2.flip(image, 1)
 

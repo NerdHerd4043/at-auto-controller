@@ -90,8 +90,8 @@ def speed(corners):
     d = ((corners[1][0] - corners[0][0]) * (corners[1][0] - corners[0][0]) + 
          (corners[1][1] - corners[0][1]) * (corners[1][1] - corners[0][1])) / 250000
 
-    if(d >= 0.6):
-        return 0.6
+    if(d >= 0.7):
+        return 0.7
     else:
         return d
 
