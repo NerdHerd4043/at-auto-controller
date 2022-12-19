@@ -54,7 +54,7 @@ cam = cv2.VideoCapture(0)
 
 loop = True
 while loop:
-    _, image = cam.read()
+    image = cam.read()[1]
 
     auto_state = sd.getBoolean('auto_state', False)
     detecting = options.always_active or auto_state
